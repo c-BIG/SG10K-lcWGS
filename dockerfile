@@ -31,12 +31,15 @@ RUN mkdir GLIMPSE \
     &&     wget --max-redirect=1 https://github.com/odelaneau/GLIMPSE/releases/download/v2.0.0/GLIMPSE2_phase_static \
     &&     wget --max-redirect=1 https://github.com/odelaneau/GLIMPSE/releases/download/v2.0.0/GLIMPSE2_ligate_static \
     &&     wget --max-redirect=1 https://github.com/odelaneau/GLIMPSE/releases/download/v2.0.0/GLIMPSE2_split_reference_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/GLIMPSE/releases/download/v2.0.0/GLIMPSE2_chunk_static \
     &&     mv GLIMPSE2_phase_static GLIMPSE2_phase \
     &&     mv GLIMPSE2_ligate_static GLIMPSE2_ligate \
     &&     mv GLIMPSE2_split_reference_static GLIMPSE2_split_reference \
+    &&     mv GLIMPSE2_chunk_static GLIMPSE2_chunk \
     &&     chmod +x GLIMPSE2_phase \
     &&     chmod +x GLIMPSE2_ligate \
     &&     chmod +x GLIMPSE2_split_reference \
+    &&     chmod +x GLIMPSE2_chunk \
     &&     cd ../ 
 
 RUN mkdir wrapper

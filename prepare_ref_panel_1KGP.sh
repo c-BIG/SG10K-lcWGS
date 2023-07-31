@@ -26,12 +26,12 @@ cd ../
 
 #download genetic map
 cd gmap
-wget https://github.com/odelaneau/GLIMPSE/blob/master/maps/genetic_maps.b38/${gmap}
+wget https://github.com/odelaneau/GLIMPSE/raw/master/maps/genetic_maps.b38/${gmap}
 cd ../
 
 #Normalization and filtering
 bcftools norm -m -any original/${in_vcf} -Ou --threads 4 | \
-bcftools view -m 2 -M 2 -V snps,indels --threads 4 -Ob -o normalized/${norm_bcf}
+bcftools view -m 2 -M 2 -v snps,indels --threads 4 -Ob -o normalized/${norm_bcf}
 bcftools index -f normalized/${norm_bcf} --threads 4
 
 #adding allele number and allele count
@@ -51,7 +51,7 @@ GLIMPSE2_chunk \
 --sequential
 
 #split reference panel into bin
-mkdir binary/chr${i}_bin
+mkdir -p binary/chr${i}_bin
 while IFS="" read -r LINE || [ -n "$LINE" ];
 do
 printf -v ID "%02d" $(echo $LINE | cut -d" " -f1)

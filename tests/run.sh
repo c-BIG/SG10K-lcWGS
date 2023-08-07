@@ -10,4 +10,4 @@ nextflow run ../prepare_ref_panel.nf \
 	-params-file params.yml \
 	-work-dir ./work \
 	--publish_dir ./output \
-	-profile local
+	-profile local 

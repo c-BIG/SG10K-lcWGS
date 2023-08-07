@@ -1,0 +1,9 @@
+samples:
+-
+ chr_no: chr22
+ cram: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr22.vcf.gz 
+ gmap: https://github.com/odelaneau/GLIMPSE/raw/master/maps/genetic_maps.b38/chr22.b38.gmap.gz
+-
+ chr_no: chr21 
+ cram: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr21.vcf.gz
+ gmap: https://github.com/odelaneau/GLIMPSE/raw/master/maps/genetic_maps.b38/chr21.b38.gmap.gz

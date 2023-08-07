@@ -82,7 +82,7 @@ PROCESSES
 ---------------------------------------------------------------------
 */
 
-include { ref_panel } from './modules/ref_panel'
+include { refpanel } from './modules/refpanel'
 
 /*
 ----------------------------------------------------------------------
@@ -94,7 +94,7 @@ WORKFLOW
 
 workflow {
 
-    BIN = “SG10K_Health_r5.5.1.phased”
+    BIN = 'SG10K_Health_r5.5.1.phased'
 
     Channel
         .fromList( params.samples )
@@ -108,8 +108,9 @@ workflow {
 
             output: rec.chr_no && vcf_file
                 def vcf_idx = file( "${rec.vcf}.tbi" )
+                def gmap_file = rec.gmap ? file( rec.gmap ) : null
 
-                return tuple( rec.chr_no, vcf_file, vcf_idx )
+                return tuple( rec.chr_no, vcf_file, vcf_idx, gmap_file )
         }
         .set { vcf_inputs }
 

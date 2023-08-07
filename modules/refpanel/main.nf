@@ -1,9 +1,10 @@
-process samtools_stats {
+process refpanel {
 
     tag { chr_no }
 
     input:
-    tuple val(chr_no), path(gmap), path(vcf), path(tbi), val(BIN)
+    tuple val(chr_no), path(vcf), path(tbi), path(gmap)
+    val(BIN)
 
     output:
     tuple val(chr_no), path("binary/${chr_no}_bin/*")
@@ -35,9 +36,9 @@ process samtools_stats {
     #split reference panel into bin
     while IFS="" read -r LINE || [ -n "$LINE" ];
     do
-    printf -v ID "%02d" $(echo $LINE | cut -d" " -f1)
-    IRG=$(echo $LINE | cut -d" " -f3)
-    ORG=$(echo $LINE | cut -d" " -f4)
+    printf -v ID "%02d" \$(echo $LINE | cut -d" " -f1)
+    IRG=\$(echo $LINE | cut -d" " -f3)
+    ORG=\$(echo $LINE | cut -d" " -f4)
 
     GLIMPSE2_split_reference \
         --reference tagged/"${BIN}.tagged.bcf" \

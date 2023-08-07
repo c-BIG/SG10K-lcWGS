@@ -6,7 +6,7 @@ export CAPSULE_LOG=none
 NXF_ANSI_LOG=false
 
 nextflow run ../prepare_ref_panel.nf \
-	-config ../../nextflow.config \
+	-config ../nextflow.config \
 	-params-file params.yml \
 	-work-dir ./work \
 	--publish_dir ./output \

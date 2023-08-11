@@ -89,7 +89,7 @@ detail_ch = Channel
 ref_fasta = Channel
 	.fromPath("s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/references/Homo_sapiens_assembly38.fasta")
 fasta_index = Channel
-	.fromPath("s3://s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/references/Homo_sapiens_assembly38.fasta.fai")
+	.fromPath("s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/references/Homo_sapiens_assembly38.fasta.fai")
 
 phase_inputs = detail_ch.combine(samples_ch)
 

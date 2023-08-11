@@ -48,7 +48,7 @@ def minimalInformationMessage() {
     log.info "Project Dir  : " + workflow.projectDir
     log.info "Launch Dir   : " + workflow.launchDir
     log.info "Work Dir     : " + workflow.workDir
-    log.info "Results Dir  : " + params.publish_dir
+    log.info "Results Dir  : " + params.outdir
     log.info "Info Dir     : " + params.info_dir
     log.info "Profile      : " + workflow.profile
 }
@@ -129,7 +129,7 @@ workflow.onComplete {
     log.info "Completed   : " + workflow.complete
     log.info "Duration    : " + workflow.duration
     log.info "Status      : " + workflow.success
-    log.info "Publish dir : " + params.publish_dir
+    log.info "Publish dir : " + params.outdir
 }
 
 workflow.onError {

@@ -1,0 +1,2 @@
+chr_no,chunk_txt,ref_bin
+chr22,s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/ref_panel_output/results/chunks/chr22_all.txt,s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/ref_panel_output/results/binary/chr22_bin/

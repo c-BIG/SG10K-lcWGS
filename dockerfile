@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     &&     apt-get -y --no-install-recommends install git python-is-python3 python3-pip \
     &&     apt-get autoclean -y \
     &&     apt-get install -y apt-utils unzip wget build-essential zlib1g-dev libbz2-dev liblzma-dev libmath-libm-perl libpthread-stubs0-dev curl python3-pycurl git git-lfs gawk libncurses-dev libboost-all-dev libgtest-dev cmake libssl-dev libcurl3-dev\
-    &&     pip install pandas numpy scipy argparse matplotlib utils 
+    &&     pip install pandas numpy scipy argparse matplotlib 
 
 RUN wget --max-redirect=1 https://github.com/samtools/bcftools/releases/download/1.15.1/bcftools-1.15.1.tar.bz2 \
     &&     tar -xf bcftools-1.15.1.tar.bz2 \

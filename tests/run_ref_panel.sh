@@ -11,4 +11,3 @@ nextflow run ../prepare_ref_panel.nf \
 	-work-dir ./work \
 	--outdir ./output \
 	-profile local
-	-resume

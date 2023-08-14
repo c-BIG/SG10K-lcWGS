@@ -94,7 +94,8 @@ WORKFLOW
 
 workflow {
 
-    BIN = 'SG10K_Health_r5.5.1.phased'
+//    BIN = 'SG10K_Health_r5.5.1.phased'
+    BIN = params.bin
     reheader = channel.fromPath(params.reheader)
 
     Channel

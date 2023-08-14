@@ -1,7 +1,7 @@
 samples:
 -
  chr_no: chr22
- vcf: s3://SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/ref_panel/CCDG_14151_B01_GRM_WGS_2020-08-05_chr22.filtered.shapeit2-duohmm-phased.vcf.gz 
+ vcf: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr22.vcf.gz 
  gmap: https://github.com/odelaneau/GLIMPSE/raw/master/maps/genetic_maps.b38/chr22.b38.gmap.gz
-bin: SG10K_Health_r5.5.1.phased
 reheader: s3://precise-scratch/gnanakkan/SG10K-LcWGS/SG10K_Health_r5.5.1.phased.header.txt
+bin: SG10K_Health_r5.5.1.phased

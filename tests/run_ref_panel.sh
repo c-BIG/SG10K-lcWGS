@@ -10,4 +10,5 @@ nextflow run ../prepare_ref_panel.nf \
 	-params-file params.yml \
 	-work-dir ./work \
 	--outdir ./output \
+	-profile local
 	-resume

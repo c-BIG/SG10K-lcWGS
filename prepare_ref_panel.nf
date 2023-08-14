@@ -94,8 +94,8 @@ WORKFLOW
 
 workflow {
 
-    BIN = params.bin
-    reheader = file ( params.reheader)
+    BIN = 'SG10K_Health_r5.5.1.phased'
+    reheader = channel.fromPath(params.reheader)
 
     Channel
         .fromList( params.samples )
@@ -115,7 +115,7 @@ workflow {
         }
         .set { vcf_inputs }
 
-    refpanel( vcf_inputs, reheader, BIN )
+    refpanel( vcf_inputs, BIN, reheader )
 
 
 }

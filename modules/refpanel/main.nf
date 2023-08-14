@@ -5,8 +5,8 @@ process refpanel {
 
     input:
     tuple val(chr_no), path(vcf), path(tbi), path(gmap)
-    val(BIN)
-    path (reheader)
+    val BIN
+    path reheader
 
     output:
     tuple val(chr_no), path("binary/${chr_no}_bin/${BIN}*"), path("chunks/${chr_no}_all.txt")

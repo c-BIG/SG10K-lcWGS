@@ -96,6 +96,9 @@ workflow {
 
     BIN = 'SG10K_Health_r5.5.1.phased'
 
+    reheader = Channel
+        .fromPath("s3://precise-scratch/gnanakkan/SG10K-LcWGS/SG10K_Health_r5.5.1.phased.header.txt")
+
     Channel
         .fromList( params.samples )
         .ifEmpty { ['chr_no': params.chr_no, 'vcf': params.vcf, 'gmap': params.gmap] }
@@ -114,7 +117,7 @@ workflow {
         }
         .set { vcf_inputs }
 
-    refpanel( vcf_inputs, BIN )
+    refpanel( vcf_inputs, reheader, BIN )
 
 
 }

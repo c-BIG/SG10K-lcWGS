@@ -6,6 +6,7 @@ process refpanel {
     input:
     tuple val(chr_no), path(vcf), path(tbi), path(gmap)
     val(BIN)
+    file (reheader)
 
     output:
     tuple val(chr_no), path("binary/${chr_no}_bin/${BIN}*"), path("chunks/${chr_no}_all.txt")
@@ -20,17 +21,18 @@ process refpanel {
     mkdir -p chunks
     mkdir -p binary/${chr_no}_bin
 
-    bcftools norm -m -any ${vcf} -Ou --threads 8 | \
-    bcftools view -m 2 -M 2 -v snps,indels --threads 4 -Ob -o normalized/${BIN}_${chr_no}.normalized.bcf
-    bcftools index -f normalized/${BIN}_${chr_no}.normalized.bcf --threads 8
+    bcftools reheader -h ${reheader} ${vcf} --threads ${task.cpus} | \
+    bcftools norm -m -any -Ou --threads ${task.cpus} | \
+    bcftools view -m 2 -M 2 -v snps,indels --threads ${task.cpus} -Ob -o normalized/${BIN}_${chr_no}.normalized.bcf
+    bcftools index -f normalized/${BIN}_${chr_no}.normalized.bcf --threads ${task.cpus}
 
     #adding allele number and allele count
     bcftools +fill-tags normalized/${BIN}_${chr_no}.normalized.bcf -Ob -o tagged/${BIN}_${chr_no}.tagged.bcf -- -t AN,AC
-    bcftools index -f tagged/${BIN}_${chr_no}.tagged.bcf --threads 8
+    bcftools index -f tagged/${BIN}_${chr_no}.tagged.bcf --threads ${task.cpus}
 
     #create bcf with no GT infor for chunking
     bcftools view -G -Ob -o nogt/${BIN}_${chr_no}.nogt.bcf tagged/${BIN}_${chr_no}.tagged.bcf
-    bcftools index -f nogt/${BIN}_${chr_no}.nogt.bcf --threads 8
+    bcftools index -f nogt/${BIN}_${chr_no}.nogt.bcf --threads ${task.cpus}
 
     #Chunking reference panel
     GLIMPSE2_chunk \

@@ -94,10 +94,8 @@ WORKFLOW
 
 workflow {
 
-    BIN = 'SG10K_Health_r5.5.1.phased'
-
-    reheader = Channel
-        .fromPath("s3://precise-scratch/gnanakkan/SG10K-LcWGS/SG10K_Health_r5.5.1.phased.header.txt")
+    BIN = params.bin
+    reheader = file ( params.reheader)
 
     Channel
         .fromList( params.samples )

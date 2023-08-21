@@ -1,7 +1,6 @@
 process refpanel {
 
     tag { chr_no }
-    publishDir "${params.publishdir}/ref_panel", mode:"copy"
 
     input:
     tuple val(chr_no), path(vcf), path(tbi), path(gmap)

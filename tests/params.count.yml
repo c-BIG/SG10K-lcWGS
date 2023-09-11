@@ -1,0 +1,9 @@
+samples:
+-
+ chr_no: chr22
+ vcf_sg10k: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr22.vcf.gz
+ vcf_1kg: s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/ref_panel/CCDG_14151_B01_GRM_WGS_2020-08-05_chr22.filtered.shapeit2-duohmm-phased.vcf.gz
+-
+ chr_no: chr21
+ vcf_sg10k: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr21.vcf.gz
+ vcf_1kg: s3://precise-scratch/gnanakkan/SG10K-LcWGS/nalagenetics-npm-grids-collaboration/SG10K_imputation/ref_panel/CCDG_14151_B01_GRM_WGS_2020-08-05_chr21.filtered.shapeit2-duohmm-phased.vcf.gz

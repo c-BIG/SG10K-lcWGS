@@ -10,13 +10,12 @@ process countpanel {
 
     script:
 
-    bcf_threads = (int) Math.ceil(task.cpus*2)
     """
 
     #create number of variants count in sg10k and 1kg reference panel
     #create the number of common variants in sg10k and 1kg reference panel
-    bcftools view -r ${chr_no} ${vcf_sg10k} --threads 8 | grep -v -c '^#' >${chr_no}.sg10k.count.txt &
-    bcftools view -r ${chr_no} ${vcf_1kg} --threads 8 | grep -v -c '^#' >${chr_no}.1kg.count.txt &
+    bcftools view -r ${chr_no} ${vcf_sg10k} --threads ${task.cpus} | grep -v -c '^#' >${chr_no}.sg10k.count.txt &
+    bcftools view -r ${chr_no} ${vcf_1kg} --threads ${task.cpus} | grep -v -c '^#' >${chr_no}.1kg.count.txt &
     bcftools isec -p ${chr_no}_isec -n=2 -w1 ${vcf_sg10k} ${vcf_1kg}
 
     """

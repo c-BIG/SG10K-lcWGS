@@ -17,6 +17,6 @@ process countpanel {
     bcftools view -r ${chr_no} ${vcf_sg10k} --threads ${task.cpus} | grep -v -c '^#' >${chr_no}.sg10k.count.txt &
     bcftools view -r ${chr_no} ${vcf_1kg} --threads ${task.cpus} | grep -v -c '^#' >${chr_no}.1kg.count.txt &
     bcftools isec -p ${chr_no}_isec -n=2 -w1 ${vcf_sg10k} ${vcf_1kg}
-
+    wc -l ${chr_no}_isec/sites.txt >${chr_no}_isec/${chr_no}.isec.count.txt
     """
 }

@@ -24,7 +24,8 @@ RUN wget --max-redirect=1 https://github.com/samtools/bcftools/releases/download
     &&     make install \
     &&     cd ../ \
     &&     rm bcftools-1.15.1.tar.bz2 \
-    &&     apt-get install -y tabix 
+    &&     apt-get install -y tabix \
+    &&     apt-get install -y vim 
 
 
 RUN mkdir GLIMPSE \

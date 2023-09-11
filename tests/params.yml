@@ -1,7 +1,0 @@
-samples:
--
- chr_no: chr22
- vcf: s3://precise-sg10k-gatk4/SG10K_Health_releases/SG10K_Health_imputation-reference-panels/SG10K_Health_r5.5/r5.5.1-vcf/SG10K_Health_r5.5.1.phased.chr22.vcf.gz 
- gmap: https://github.com/odelaneau/GLIMPSE/raw/master/maps/genetic_maps.b38/chr22.b38.gmap.gz
-reheader: s3://precise-scratch/gnanakkan/SG10K-LcWGS/SG10K_Health_r5.5.1.phased.header.txt
-bin: SG10K_Health_r5.5.1.phased

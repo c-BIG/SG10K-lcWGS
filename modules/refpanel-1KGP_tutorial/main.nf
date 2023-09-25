@@ -21,7 +21,7 @@ process refpanel {
     mkdir -p binary/${chr_no}_bin
 
     bcftools norm -m -any ${vcf} -Ou --threads ${bcf_threads} | \
-    bcftools view -m 2 -M 2 -v snps -s ^NA12878,NA12891,NA12892 --threads ${bcf_threads} -Ob -o normalized/${BIN}_${chr_no}.normalized.bcf
+    bcftools view -m 2 -M 2 -v snps -s ^NA12878,NA12891,NA12892 --force-samples --threads ${bcf_threads} -Ob -o normalized/${BIN}_${chr_no}.normalized.bcf
     bcftools index -f normalized/${BIN}_${chr_no}.normalized.bcf --threads ${bcf_threads}
 
     #adding allele number and allele count

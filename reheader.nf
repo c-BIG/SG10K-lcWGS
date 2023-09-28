@@ -82,7 +82,7 @@ PROCESSES
 ---------------------------------------------------------------------
 */
 
-include { refpanel } from './modules/reheader'
+include { reheader } from './modules/reheader'
 
 /*
 ----------------------------------------------------------------------

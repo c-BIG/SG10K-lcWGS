@@ -112,7 +112,7 @@ workflow {
         }
         .set { vcf_inputs }
 
-    refpanel( vcf_inputs, reheader )
+    reheader( vcf_inputs, reheader )
 
 
 }

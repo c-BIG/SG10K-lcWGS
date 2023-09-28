@@ -1,4 +1,4 @@
-process refpanel {
+process reheader {
 
     tag { chr_no }
 

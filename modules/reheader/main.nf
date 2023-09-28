@@ -7,7 +7,7 @@ process refpanel {
     path reheader
 
     output:
-    tuple val(chr_no), path(sg10k_chr22.reheader.vcf)
+    tuple val(chr_no), path("sg10k_chr22.reheader.vcf*")
 
     script:
 
@@ -15,6 +15,7 @@ process refpanel {
     """
 
     bcftools reheader -h ${reheader} ${vcf} --threads ${bcf_threads} -o sg10k_chr22.reheader.vcf
+    bgzip sg10k_chr22.reheader.vcf
 
     """
 }

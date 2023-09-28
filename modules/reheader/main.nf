@@ -7,7 +7,7 @@ process refpanel {
     path reheader
 
     output:
-    tuple val(chr_no), path("sg10k_chr22.reheader.vcf*")
+    tuple val(chr_no), path("sg10k_chr22.reheader.vcf.gz")
 
     script:
 

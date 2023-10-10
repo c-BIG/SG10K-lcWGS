@@ -26,7 +26,7 @@ process phasing {
     do
     REG=\$(echo \$LINE | awk '{ print \$3; }')
     CHUNK_NBR=\$(echo \$LINE | awk '{ print \$1; }')
-    OUT=SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_${CHUNK_NBR}.shapeit5_common.bcf
+    OUT=SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_\${CHUNK_NBR}.shapeit5_common.bcf
 
     phase_common \
         --input ${vcf} \

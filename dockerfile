@@ -47,6 +47,28 @@ RUN mkdir GLIMPSE \
     &&     chmod +x GLIMPSE2_concordance \
     &&     cd ../
 
+RUN mkdir SHAPEIT5 \
+    &&     cd SHAPEIT5 \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_common_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/ligate_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_rare_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/xcftools_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/switch_static \
+    &&     wget --max-redirect=1 https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/simulate_static \
+    &&     mv phase_common_static phase_common \
+    &&     mv ligate_static ligate \
+    &&     mv phase_rare_static phase_rare \
+    &&     mv xcftools_static xcftools \
+    &&     mv switch_static switch \
+    &&     mv simulate_static simulate \
+    &&     chmod +x phase_common \
+    &&     chmod +x ligate \
+    &&     chmod +x phase_rare \
+    &&     chmod +x xcftools \
+    &&     chmod +x switch \
+    &&     chmod +x simulate \
+    &&     cd ../
+
 RUN mkdir wrapper
 
 COPY ./GLIMPSE_phase.py /wrapper 
@@ -54,4 +76,5 @@ COPY ./GLIMPSE_phase.py /wrapper
 RUN pip install awscli 
 ENV PATH="$PATH:/bcftools/bin"
 ENV PATH="$PATH:/GLIMPSE/"
+ENV PATH="$PATH:/SHAPEIT5/"
 WORKDIR /data

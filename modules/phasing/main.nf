@@ -16,7 +16,7 @@ process phasing {
     bcf_threads = (int) Math.ceil(task.cpus*2)
     """
 
-    #phasing per chr by chunks
+    #phasing common variants per chr by chunks
 
     while read LINE;
     do
@@ -30,15 +30,22 @@ process phasing {
         --output ${chr_no}/\${OUT} \
         --thread ${bcf_threads} \
         --filter-maf 0.001 \
-        --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${bcf_threads} \
+        --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${bcf_threads}
     done < ${chunks}
 
-ls -1v ${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_common.bcf > ${chr_no}/${chr_no}_phase_common.txt
+    # list phased common varinats files per chr
+
+    ls -1v ${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_common.bcf > ${chr_no}/${chr_no}_phase_common.txt
+
+    # ligate phased common variants per chr
 
     ligate \
     --input ${chr_no}/${chr_no}_phase_common.txt \
     --output ${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.shapeit5_common_ligate.bcf \
     --thread ${bcf_threads} \
     --index
+
+    #phasing rare variants per chr 
+
     """
 }

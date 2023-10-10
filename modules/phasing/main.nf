@@ -17,6 +17,8 @@ process phasing {
     bcf_threads = (int) Math.ceil(task.cpus*2)
     """
 
+    mkdir -p ${chr_no}
+
     #phasing common variants per chr by chunks
 
     while read LINE;

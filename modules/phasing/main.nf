@@ -86,7 +86,7 @@ process phasing {
 
     OUT_CONCAT=${chr_no}/SG10K_Health_r5.3.2.n9770_${chr_no}.full.shapeit5_rare.bcf
 
-    bcftools concat -n -f ${chr_no}/concat_list_${chr_no}.txt -o ${OUT_CONCAT} && bcftools index ${OUT_CONCAT} --threads ${bcf_threads}
+    bcftools concat -n -f ${chr_no}/concat_list_${chr_no}.txt -o \${OUT_CONCAT} && bcftools index \${OUT_CONCAT} --threads ${bcf_threads}
 
     """
 }

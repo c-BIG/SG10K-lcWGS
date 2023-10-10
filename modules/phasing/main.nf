@@ -16,10 +16,6 @@ process phasing {
     bcf_threads = (int) Math.ceil(task.cpus*2)
     """
 
-    mkdir -p chunks
-    mkdir -p binary/${chr_no}_bin
-
-
     #phasing per chr by chunks
 
     while read LINE;

@@ -71,11 +71,11 @@ process phasing {
     phase_rare \
     --input-plain ${vcf} \
     --map ${gmap} \
-    --output ${chr_no}/\$OUT \
+    --output ${chr_no}/\${OUT} \
     --thread ${bcf_threads} \
-    --scaffold \$SCAF \
-    --scaffold-region \$SCAFFOLD_REG \
-    --input-region \$INPUT_REG && bcftools index -f \$OUT --threads ${bcf_threads}
+    --scaffold \${SCAF} \
+    --scaffold-region \${SCAFFOLD_REG} \
+    --input-region \${INPUT_REG} && bcftools index -f \${OUT} --threads ${bcf_threads}
     done < ${chunks}
 
     # list chr wide phased data

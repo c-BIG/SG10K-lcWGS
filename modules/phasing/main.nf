@@ -32,7 +32,7 @@ process phasing {
         --output ${chr_no}/\${OUT} \
         --thread ${bcf_threads} \
         --filter-maf 0.001 \
-        --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${bcf_threads}
+        --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
     done < ${chunks}
 
     # list phased common varinats files per chr

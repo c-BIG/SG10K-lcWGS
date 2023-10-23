@@ -30,7 +30,7 @@ process phasing {
         --input ${vcf} \
         --map ${gmap} \
         --output ${chr_no}/\${OUT} \
-        --thread ${bcf_threads} \
+        --thread ${task.cpus} \
         --filter-maf 0.001 \
         --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
     done < ${chunks}

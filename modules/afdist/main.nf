@@ -6,7 +6,7 @@ process af_dist {
     tuple val(chr_no), path(vcf_sg10k), path(tbi_sg10k), path(vcf_1kg), path(tbi_1kg)
 
     output:
-    # tuple val(chr_no), path("1kg_${chr_no}.AF.MAF_bin_count_output.txt"), path("sg10k_${chr_no}.MAF_bin_count_ouput.txt")
+    // tuple val(chr_no), path("1kg_${chr_no}.AF.MAF_bin_count_output.txt"), path("sg10k_${chr_no}.MAF_bin_count_ouput.txt")
     tuple val(chr_no), path("1kg_${chr_no}.AF.MAF_bin_count_output.txt")
 
     script:

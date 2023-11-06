@@ -68,13 +68,13 @@ process phasing {
     OUT=SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_\${CHUNK_NBR}.shapeit5_rare.bcf
 
     phase_rare \
-    --input-plain ${vcf} \
-    --map ${gmap} \
-    --output ${chr_no}/\${OUT} \
-    --thread ${task.cpus} \
-    --scaffold \${SCAF} \
-    --scaffold-region \${SCAFFOLD_REG} \
-    --input-region \${INPUT_REG} && bcftools index -f \${OUT} --threads ${task.cpus}
+        --input-plain ${vcf} \
+        --map ${gmap} \
+        --output ${chr_no}/\${OUT} \
+        --thread ${task.cpus} \
+        --scaffold \${SCAF} \
+        --scaffold-region \${SCAFFOLD_REG} \
+        --input-region \${INPUT_REG} && bcftools index -f \${OUT} --threads ${task.cpus}
     done < ${chunks}
 
     # list chr wide phased data

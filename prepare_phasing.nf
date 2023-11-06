@@ -100,7 +100,7 @@ workflow {
 
     Channel
         .fromList( params.samples )
-        .ifEmpty { ['chr_no': params.chr_no, 'chunks': params.chunks, 'vcf': params.vcf, 'gmap': params.gmap] }
+        .ifEmpty { ['chr_no': params.chr_no, 'chunks': params.chunks, 'vcf': params.vcf, 'gmap': params.gmap, 'scaffold': params.scaffold] }
         .set { samples }
 
 

@@ -12,10 +12,10 @@ process af_dist {
 
     """
 
-    touch 1kg_${chr_no}.AF.MAF_bin_count_all.txt
-    touch sg10k_${chr_no}.MAF_bin_count_all.txt
-    touch 1kg_${chr_no}.AF.MAF_bin_count_output.txt
-    touch sg10k_${chr_no}.MAF_bin_count_ouput.txt
+    echo >> 1kg_${chr_no}.AF.MAF_bin_count_all.txt
+    echo >> sg10k_${chr_no}.MAF_bin_count_all.txt
+    echo >> 1kg_${chr_no}.AF.MAF_bin_count_output.txt
+    echo >> sg10k_${chr_no}.MAF_bin_count_ouput.txt
 
     1kg_AF_MAF_bin="1kg_${chr_no}.AF.MAF_bin_count_all.txt"
     sg10k_AF_MAF_bin="sg10k_${chr_no}.MAF_bin_count_all.txt"

@@ -3,7 +3,7 @@ process phasing {
     tag { chr_no }
 
     input:
-    tuple val(chr_no), path(vcf), path(tbi), path(chunks), path(gmap), path(scaffold), path(scaffold_tbi)
+    tuple val(chr_no), path(vcf), path(tbi), path(chunks), path(gmap), path(scaffold), path(scaffold_idx)
 
     output:
     tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_rare.bcf"), path("${chr_no}/concat_list_${chr_no}.txt")

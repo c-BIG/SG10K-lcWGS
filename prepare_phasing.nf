@@ -113,8 +113,9 @@ workflow {
                 def chunks_file = rec.chunks ? file( rec.chunks ) : null
                 def gmap_file = rec.gmap ? file( rec.gmap ) : null
                 def scaffold_file = rec.scaffold ? file( rec.scaffold ) : null
+                def scaffold_idx = file( "${rec.scaffold}.csi" )
 
-                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks_file, gmap_file, scaffold_file )
+                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks_file, gmap_file, scaffold_file, scaffold_idx )
         }
         .set { vcf_inputs }
 

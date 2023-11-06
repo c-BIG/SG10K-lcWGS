@@ -6,7 +6,7 @@ process af_dist {
     tuple val(chr_no), path(vcf_sg10k), path(tbi_sg10k), path(vcf_1kg), path(tbi_1kg)
 
     output:
-    tuple val(chr_no), path("1kg_${chr_no}.AF.MAF_bin_count_output.txt"), path("1kg_${chr_no}.AF.MAF_count_all.txt"), path("sg10k_${chr_no}.MAF_count_all.txt"), path("sg10k_${chr_no}.MAF_bin_count_ouput.txt")
+    tuple val(chr_no), path("1kg_${chr_no}.AF.MAF_bin_count_output.txt"), path("1kg_${chr_no}.AF.MAF_count_all.txt"), path("sg10k_${chr_no}.AF.MAF_count_all.txt"), path("sg10k_${chr_no}.AF.MAF_bin_count_ouput.txt")
 
     script:
 
@@ -55,8 +55,8 @@ process af_dist {
     awk '{ if ( \$1 > 0.50000 && \$1 <= 0.60000) print \$0 }' sg10k_{chr_no}.AF.MAF_count_all.txt  |wc -l >sg10k_{chr_no}.AF.MAF_bin_count_6.txt
 
 	
-    cat ${chr_no}_1kg.AF.MAF_bin_count*.txt >1kg_${chr_no}.AF.MAF_bin_count_output.txt
-    cat ${chr_no}_sg10k.AF.MAF_bin_count*.txt >sg10k_${chr_no}.MAF_bin_count_ouput.txt
+    cat 1kg_{chr_no}.AF.MAF_bin_count*.txt >1kg_${chr_no}.AF.MAF_bin_count_output.txt
+    cat sg10k_{chr_no}.AF.MAF_bin_count*.txt >sg10k_${chr_no}.AF.MAF_bin_count_ouput.txt
 
     """
 }

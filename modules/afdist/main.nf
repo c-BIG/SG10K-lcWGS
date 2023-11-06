@@ -12,12 +12,6 @@ process af_dist {
 
     """
 
-    1kg_AF_MAF_bin="1kg_${chr_no}.AF.MAF_bin_count_all.txt"
-    sg10k_AF_MAF_bin="sg10k_${chr_no}.MAF_bin_count_all.txt"
-    1kg_AF_MAF_bin_out="1kg_${chr_no}.AF.MAF_bin_count_output.txt"
-    sg10k_AF_MAF_bin_out="sg10k_${chr_no}.MAF_bin_count_ouput.txt"
-
-
     #create number of variants count in sg10k and 1kg reference panel
     #bin the MAF
     bcftools view -H ${vcf_sg10k} --threads ${task.cpus} |cut -f8 |cut -f2 -d';'|sed 's/AF=//g' >${sg10k_AF_MAF_bin}

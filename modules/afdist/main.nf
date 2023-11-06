@@ -14,8 +14,6 @@ process af_dist {
 
     #create number of variants count in sg10k and 1kg reference panel
     #bin the MAF
-    bcftools view -H ${vcf_sg10k} --threads ${task.cpus} |cut -f8 |cut -f2 -d';'|sed 's/AF=//g' >${sg10k_AF_MAF_bin}
-
     bcftools +fill-tags ${vcf_1kg} -- -t AF | bcftools view --threads ${task.cpus} --drop-genotypes -Oz -o 1kg_${chr_no}_AF.vcf.gz -
     tabix 1kg_${chr_no}_AF.vcf.gz
 

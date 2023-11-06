@@ -29,7 +29,6 @@ process af_dist {
     bcftools view -H 1kg_${chr_no}_AF.vcf.gz --threads ${task.cpus} |cut -f8|sed 's/AF=//g' >${1kg_AF_MAF_bin}
 
     awk '{ if ( \$1 <= 0.00000 ) print \$0 }' ${1kg_AF_MAF_bin}  >${chr_no}_1kg.AF.MAF_bin_count_0-00000.txt
-
     awk '{ if ( \$1 > 0.00000 && \$1 <= 0.00100) print \$0 }' ${1kg_AF_MAF_bin} >${chr_no}_1kg.AF.MAF_bin_count_0-00100.txt
     awk '{ if ( \$1 > 0.00100 && \$1 <= 0.00200) print \$0 }' ${1kg_AF_MAF_bin} >${chr_no}_1kg.AF.MAF_bin_count_0-00200.txt
     awk '{ if ( \$1 > 0.00200 && \$1 <= 0.00500) print \$0 }' ${1kg_AF_MAF_bin} >${chr_no}_1kg.AF.MAF_bin_count_0-00500.txt

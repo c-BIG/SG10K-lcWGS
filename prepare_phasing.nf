@@ -100,7 +100,7 @@ workflow {
 
     Channel
         .fromList( params.samples )
-        .ifEmpty { ['chr_no': params.chr_no, 'chunks': params.chunks, 'vcf': params.vcf, 'gmap': params.gmap, 'scaffold': params.scaffold] }
+        .ifEmpty { ['chr_no': params.chr_no, 'chunks-common': params.chunks-common, 'vcf': params.vcf, 'gmap': params.gmap, 'chunks-rare': params.chunks-rare] }
         .set { samples }
 
 
@@ -110,12 +110,11 @@ workflow {
 
             output: rec.chr_no && vcf_file
                 def vcf_idx = file( "${rec.vcf}.tbi" )
-                def chunks_file = rec.chunks ? file( rec.chunks ) : null
+                def chunks-common_file = rec.chunks-common ? file( rec.chunks-common ) : null
                 def gmap_file = rec.gmap ? file( rec.gmap ) : null
-                def scaffold_file = rec.scaffold ? file( rec.scaffold ) : null
-                def scaffold_idx = file( "${rec.scaffold}.csi" )
+                def chunks-rare_file = rec.chunks-rare ? file( rec.chunks-rare ) : null
 
-                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks_file, gmap_file, scaffold_file, scaffold_idx )
+                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks-common_file, gmap_file, chunks-rare_file )
         }
         .set { vcf_inputs }
 

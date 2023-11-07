@@ -42,7 +42,7 @@ process phasing {
         --thread ${task.cpus} \
         --scaffold ${scaffold} \
         --scaffold-region \${SCAFFOLD_REG} \
-        --input-region \${INPUT_REG} && bcftools index -f \${OUT} --threads ${task.cpus}
+        --input-region \${INPUT_REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
     done < ${chunks}
 
     # list chr wide phased data

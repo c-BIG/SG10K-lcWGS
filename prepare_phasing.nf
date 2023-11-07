@@ -110,11 +110,11 @@ workflow {
 
             output: rec.chr_no && vcf_file
                 def vcf_idx = file( "${rec.vcf}.tbi" )
-                def chunks-common_file = rec.chunks-common ? file( rec.chunks-common ) : null
+                def chunkscommon_file = rec.chunkscommon ? file( rec.chunkscommon ) : null
                 def gmap_file = rec.gmap ? file( rec.gmap ) : null
-                def chunks-rare_file = rec.chunks-rare ? file( rec.chunks-rare ) : null
+                def chunksrare_file = rec.chunksrare ? file( rec.chunksrare ) : null
 
-                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks-common_file, gmap_file, chunks-rare_file )
+                return tuple( rec.chr_no, vcf_file, vcf_idx, chunkscommon_file, gmap_file, chunksrare_file )
         }
         .set { vcf_inputs }
 

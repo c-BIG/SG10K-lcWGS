@@ -82,7 +82,7 @@ PROCESSES
 ---------------------------------------------------------------------
 */
 
-include { phasing } from './modules/phasingrare'
+include { phasingrare } from './modules/phasingrare'
 
 /*
 ----------------------------------------------------------------------
@@ -119,7 +119,7 @@ workflow {
         }
         .set { vcf_inputs }
 
-    phasing( vcf_inputs )
+    phasingrare( vcf_inputs )
 
 
 }

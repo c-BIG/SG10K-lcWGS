@@ -6,7 +6,7 @@ process phasing {
     tuple val(chr_no), path(vcf), path(tbi), path(chunkscommon), path(gmap), path(chunksrare)
 
     output:
-    tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_common.bcf"), path("${chr_no}/${chr_no}_phase_common.txt"), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.shapeit5_common_ligate.bcf"), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_rare.bcf"), path("${chr_no}/concat_list_${chr_no}.txt"), path("${chr_no}/SG10K_Health_r5.3.2.n9770_${chr_no}.full.shapeit5_rare.bcf")
+    tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_common.bcf*"), path("${chr_no}/${chr_no}_phase_common.txt"), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.shapeit5_common_ligate.bcf*"), path("${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_rare.bcf*"), path("${chr_no}/concat_list_${chr_no}.txt"), path("${chr_no}/SG10K_Health_r5.3.2.n9770_${chr_no}.full.shapeit5_rare.bcf*")
 
     // tuple val(chr_no), path("SG10K_Health_r5.3.2.n9770.${chr_no}.chunk_*.shapeit5_common.bcf"), emit: phased_bcf
     // tuple val(chr_no), path("${chr_no}_phase_common.txt"), emit: phased_bcf_list

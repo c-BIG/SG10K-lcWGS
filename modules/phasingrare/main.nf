@@ -51,8 +51,8 @@ process phasingrare {
 
     # concatenate chunks
 
-    OUT_CONCAT=SG10K_Health_r5.3.2.n9770_${chr_no}.full.shapeit5_rare.bcf
+    # OUT_CONCAT=SG10K_Health_r5.3.2.n9770_${chr_no}.full.shapeit5_rare.bcf
 
-    bcftools concat -n -f ${chr_no}/concat_list_${chr_no}.txt -o ${chr_no}/\${OUT_CONCAT} && bcftools index ${chr_no}/\${OUT_CONCAT} --threads ${task.cpus}
+    # bcftools concat -n -f ${chr_no}/concat_list_${chr_no}.txt -o ${chr_no}/\${OUT_CONCAT} && bcftools index ${chr_no}/\${OUT_CONCAT} --threads ${task.cpus}
     """
 }

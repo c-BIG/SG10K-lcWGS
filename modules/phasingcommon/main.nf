@@ -31,7 +31,7 @@ process phasingcommon {
         --thread ${task.cpus} \
         --filter-maf 0.001 \
         --region \${REG} && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
-    done < ${chunkscommon}
+    done < ${chunks}
 
     # list phased common varinats files per chr
 

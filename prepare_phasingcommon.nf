@@ -98,27 +98,28 @@ workflow {
 //    BIN = params.bin
 //    reheader = channel.fromPath(params.reheader)
 
-    Channel
-        .fromList( params.samples )
-        .ifEmpty { ['chr_no': params.chr_no, 'chunks': params.chunks, 'vcf': params.vcf, 'gmap': params.gmap] }
-        .set { samples }
-
+    vcf = file( params.vcf )
+    vcf_idx = file( params.vcf + ".csi" )
+    gmap = file( params.gmap )
 
     Channel
-        samples.branch { rec ->
-            def vcf_file = rec.vcf ? file( rec.vcf ) : null
+        .fromPath(params.phase_common_list)
+        .splitCsv( header: true, sep: '\t' )
+        // .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
+        .map { row-> tuple(row.[0], row.[1], row.[2]) }
+        .set { phase_common_run_ch }
 
-            output: rec.chr_no && vcf_file
-                def vcf_idx = file( "${rec.vcf}.tbi" )
-                def chunkscommon_file = rec.chunks ? file( rec.chunks ) : null
-                def gmap_file = rec.gmap ? file( rec.gmap ) : null
 
-                return tuple( rec.chr_no, vcf_file, vcf_idx, chunkscommon_file, gmap_file )
-        }
-        .set { vcf_inputs }
+    phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
 
-    phasingcommon( vcf_inputs )
+    //phasingcommon_chunks_list = countLines(params.phase_common_list)
+    //phasingcommon_out_list = listOfFiles(files(phasingcommon.out))
 
+        //if( phasingcommon_chunks_list == phasingcommon_out_list ) {
+            //ligate( phasingcommon_list )
+        //}
+
+//         .map { row-> tuple(row.chr_no, row.chunk_region1, row.chunk_region2, file(row.vcf), file(row.index), file(row.gmap)) }
 
 }
 

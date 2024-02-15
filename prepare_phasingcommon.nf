@@ -100,8 +100,8 @@ workflow {
 
     Channel
         .fromPath(params.phase_common_list)
-        .splitCsv(header: ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7' 'col8'], sep: '\t')
-        .map { row -> tuple(row.col1, row.col2, row.col3) }
+        .splitCsv(header: false, sep: '\t')
+        .map { row -> tuple(row[0], row[1], row[2]) }
         .set { phase_common_run_ch }
 
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )

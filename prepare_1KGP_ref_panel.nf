@@ -103,20 +103,6 @@ workflow {
         .set { samples }
 
 
-    # Channel
-    #     samples.branch { rec ->
-    #         def vcf_file = rec.vcf ? file( rec.vcf ) : null
-
-    #         output: rec.chr_no && vcf_file
-    #             def vcf_idx = file( "${rec.vcf}.tbi" )
-    #             def gmap_file = rec.gmap ? file( rec.gmap ) : null
-
-    #             return tuple( rec.chr_no, vcf_file, vcf_idx, gmap_file )
-    #     }
-    #     .set { vcf_inputs }
-
-    ## create chunks 20cM and 4cM from sh10k r5.3.2 shapeit5 qced bcf files
-
     Channel
         samples.branch { rec ->
             def vcf_file = rec.vcf ? file( rec.vcf ) : null
@@ -133,6 +119,36 @@ workflow {
 
 
 }
+
+/*
+    Channel
+        samples.branch { rec ->
+            def vcf_file = rec.vcf ? file( rec.vcf ) : null
+
+            output: rec.chr_no && vcf_file
+                def vcf_idx = file( "${rec.vcf}.tbi" )
+                def gmap_file = rec.gmap ? file( rec.gmap ) : null
+
+                return tuple( rec.chr_no, vcf_file, vcf_idx, gmap_file )
+        }
+        .set { vcf_inputs }
+
+    // create chunks 20cM and 4cM from sh10k r5.3.2 shapeit5 qced bcf files
+
+    Channel
+        samples.branch { rec ->
+            def vcf_file = rec.vcf ? file( rec.vcf ) : null
+
+            output: rec.chr_no && vcf_file
+                def vcf_idx = file( "${rec.vcf}.csi" )
+                def gmap_file = rec.gmap ? file( rec.gmap ) : null
+
+                return tuple( rec.chr_no, vcf_file, vcf_idx, gmap_file )
+        }
+        .set { vcf_inputs }
+
+    refpanel( vcf_inputs, BIN )
+*/
 
 /*
 ----------------------------------------------------------------------

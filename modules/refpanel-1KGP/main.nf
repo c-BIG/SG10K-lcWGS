@@ -8,7 +8,7 @@ process refpanel {
 
     output:
     // tuple val(chr_no), path("binary/${chr_no}_bin/${BIN}*"), path("chunks/${chr_no}_all.txt")
-    tuple val(chr_no), path("chunks/${chr_no}_all*.txt")
+    tuple val(chr_no), path("chunks/${chr_no}_*.txt")
 
     script:
 
@@ -37,7 +37,7 @@ process refpanel {
     GLIMPSE2_chunk \
         --input nogt/${BIN}_${chr_no}.nogt.bcf \
         --region ${chr_no} \
-        --output chunks/"${chr_no}_all_4cM_maf001.txt" \
+        --output chunks/"${chr_no}_4cM_maf001.txt" \
         --map ${gmap} \
         --sequential \
         --window-cm 4.0 \
@@ -47,7 +47,7 @@ process refpanel {
     GLIMPSE2_chunk \
         --input nogt/${BIN}_${chr_no}.nogt.bcf \
         --region ${chr_no} \
-        --output chunks/"${chr_no}_all_20cM_maf001.txt" \
+        --output chunks/"${chr_no}_20cM_maf001.txt" \
         --map ${gmap} \
         --sequential \
         --window-cm 20.0 \

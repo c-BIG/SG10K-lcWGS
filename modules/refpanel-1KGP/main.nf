@@ -54,24 +54,24 @@ process refpanel {
         --sparse-maf 0.001
 
     #Chunking reference panel with 4cM and maf 0.01
-    GLIMPSE2_chunk \
-        --input nogt/${BIN}_${chr_no}.nogt.bcf \
-        --region ${chr_no} \
-        --output chunks/"${chr_no}_all_4cM_maf01.txt" \
-        --map ${gmap} \
-        --sequential \
-        --window-cm 4.0 \
-        --sparse-maf 0.01
+    #GLIMPSE2_chunk \
+    #    --input nogt/${BIN}_${chr_no}.nogt.bcf \
+    #    --region ${chr_no} \
+    #    --output chunks/"${chr_no}_all_4cM_maf01.txt" \
+    #    --map ${gmap} \
+    #    --sequential \
+    #    --window-cm 4.0 \
+    #    --sparse-maf 0.01
 
     #Chunking reference panel with 20cM and maf 0.01
-    GLIMPSE2_chunk \
-        --input nogt/${BIN}_${chr_no}.nogt.bcf \
-        --region ${chr_no} \
-        --output chunks/"${chr_no}_all_20cM_maf01.txt" \
-        --map ${gmap} \
-        --sequential \
-        --window-cm 20.0 \
-        --sparse-maf 0.01
+    #GLIMPSE2_chunk \
+    #    --input nogt/${BIN}_${chr_no}.nogt.bcf \
+    #    --region ${chr_no} \
+    #    --output chunks/"${chr_no}_all_20cM_maf01.txt" \
+    #    --map ${gmap} \
+    #    --sequential \
+    #    --window-cm 20.0 \
+    #    --sparse-maf 0.01
 
     #split reference panel into bin
     #while IFS="" read -r LINE || [ -n "\$LINE" ];

@@ -94,18 +94,14 @@ WORKFLOW
 
 workflow {
 
-//    BIN = 'SG10K_Health_r5.5.1.phased'
-//    BIN = params.bin
-//    reheader = channel.fromPath(params.reheader)
-
     vcf = file( params.vcf )
     vcf_idx = file( params.vcf + ".csi" )
     gmap = file( params.gmap )
 
     Channel
         .fromPath(params.phase_common_list)
-        .splitCsv(header: ['chunk_no', 'chr_no', 'chunk_region', 'col4', 'col5', 'col6', 'col7' 'col8'], sep: '\t')
-        .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
+        .splitCsv(header: ['col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'col7' 'col8'], sep: '\t')
+        .map { row -> tuple(row.col1, row.col2, row.col3) }
         .set { phase_common_run_ch }
 
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )

@@ -102,11 +102,11 @@ workflow {
     vcf_idx = file( params.vcf + ".csi" )
     gmap = file( params.gmap )
 
-    phase_common_run_ch = Channel
+    Channel
         .fromPath(params.phase_common_list)
-        .splitCsv(header:false, sep: '\t')
-        .map { row-> tuple(row[0], row[1], row[2]) }
-        .view()
+        .splitCsv(header:['chunk_no', 'chr_no', 'chunk_region', 'col4', 'col5', 'col6', 'col7' 'col8'], sep: '\t')
+        .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
+        .set { phase_common_run_ch }
 
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
 

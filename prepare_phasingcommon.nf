@@ -104,7 +104,8 @@ workflow {
 
     Channel
         .fromPath(params.phase_common_list)
-        .splitCsv( header: true, sep: '\t' )
+        .splitCsv( sep: '\t' )
+        // .splitCsv( header: true, sep: '\t' )
         // .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
         .map { row-> tuple(row.[0], row.[1], row.[2]) }
         .set { phase_common_run_ch }

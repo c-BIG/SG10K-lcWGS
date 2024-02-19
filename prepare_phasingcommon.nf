@@ -83,6 +83,7 @@ PROCESSES
 */
 
 include { phasingcommon } from './modules/phasingcommon'
+include { ligatecommon } from './modules/ligatecommon'
 
 /*
 ----------------------------------------------------------------------
@@ -101,10 +102,12 @@ workflow {
     Channel
         .fromPath(params.phase_common_list)
         .splitCsv(header: false, sep: '\t')
-        .map { row -> tuple(row[0], row[1], row[2]) }
+        .map { row -> tuple(row[1], row[0], row[2]) }
         .set { phase_common_run_ch }
 
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
+
+    ligatecommon( phasingcommon.out.collect() )
 
 }
 

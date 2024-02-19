@@ -1,6 +1,6 @@
 process phasingrare {
 
-    tag "${chr_no}_${chunk_no}_${chunk_region}"
+    tag "${chr_no}_${chunk_no}_${scaffold_region}_${input_region}"
 
     input:
     tuple val(chr_no), val(chunk_no), val(scaffold_region), val(input_region)

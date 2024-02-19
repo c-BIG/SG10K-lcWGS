@@ -22,8 +22,6 @@ process phasingrare {
 
     # phasing rare variants per chr by chunks
 
-    ## SCAF=${chr_no}/SG10K_Health_r5.3.2.n9770.${chr_no}.shapeit5_common_ligate.bcf
-
     OUT=SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_${chunk_no}.rare.bcf
 
     phase_rare \

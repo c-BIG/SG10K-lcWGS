@@ -83,7 +83,6 @@ PROCESSES
 */
 
 include { phasingrare } from './modules/phasingrare'
-include { ligaterare } from './modules/ligaterare'
 
 /*
 ----------------------------------------------------------------------
@@ -108,8 +107,6 @@ workflow {
         .set { phase_rare_run_ch }
 
     phasingrare( phase_rare_run_ch, vcf, vcf_idx, gmap, scaffold, scaffold_idx )
-
-    // 	ligatecommon( phasingrare.out.collect() )
 
 }
 

@@ -98,7 +98,7 @@ workflow {
     vcf_idx = file( params.vcf + ".csi" )
     gmap = file( params.gmap )
     scaffold = file( params.scaffold )
-    scaffold_idx = file( params.scaffold ) + ".csi" )
+    scaffold_idx = file( params.scaffold + ".csi" )
 
     Channel
         .fromPath(params.phase_rare_list)

@@ -103,7 +103,7 @@ workflow {
     Channel
         .fromPath(params.phase_rare_list)
         .splitCsv(header: false, sep: '\t')
-        .map { row -> tuple(row[1], row[0], row[2], row[3]) }
+        .map { row -> tuple(row[0], row[1], row[2], row[3]) }
         .set { phase_rare_run_ch }
 
     phasingrare( phase_rare_run_ch, vcf, vcf_idx, gmap, scaffold, scaffold_idx )

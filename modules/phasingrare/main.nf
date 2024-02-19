@@ -11,7 +11,7 @@ process phasingrare {
     path(scaffold_idx)
 
     output:
-    tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_*.common.bcf*")
+    tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_*.rare.bcf*")
 
 
     script:

@@ -83,6 +83,7 @@ PROCESSES
 */
 
 include { phasingrare } from './modules/phasingrare'
+include { ligaterare } from './modules/ligaterare'
 
 /*
 ----------------------------------------------------------------------
@@ -94,35 +95,35 @@ WORKFLOW
 
 workflow {
 
-//    BIN = 'SG10K_Health_r5.5.1.phased'
-//    BIN = params.bin
-//    reheader = channel.fromPath(params.reheader)
+    vcf = file( params.vcf )
+    vcf_idx = file( params.vcf + ".csi" )
+    gmap = file( params.gmap )
+    scaffold = file( params.scaffold )
+    scaffold_idx = file( params.scaffold ) + ".csi" )
 
     Channel
-        .fromList( params.samples )
-        .ifEmpty { ['chr_no': params.chr_no, 'chunks': params.chunks, 'vcf': params.vcf, 'gmap': params.gmap, 'scaffold': params.scaffold] }
-        .set { samples }
+        .fromPath(params.phase_rare_list)
+        .splitCsv(header: false, sep: '\t')
+        .map { row -> tuple(row[1], row[0], row[2], row[3]) }
+        .set { phase_rare_run_ch }
 
+    phasingrare( phase_rare_run_ch, vcf, vcf_idx, gmap, scaffold, scaffold_idx )
 
-    Channel
-        samples.branch { rec ->
-            def vcf_file = rec.vcf ? file( rec.vcf ) : null
-
-            output: rec.chr_no && vcf_file
-                def vcf_idx = file( "${rec.vcf}.tbi" )
-                def chunks_file = rec.chunks ? file( rec.chunks ) : null
-                def gmap_file = rec.gmap ? file( rec.gmap ) : null
-                def scaffold_file = rec.scaffold ? file( rec.scaffold ) : null
-                def scaffold_idx = file( "${rec.scaffold}.csi" )
-
-                return tuple( rec.chr_no, vcf_file, vcf_idx, chunks_file, gmap_file, scaffold_file, scaffold_idx )
-        }
-        .set { vcf_inputs }
-
-    phasingrare( vcf_inputs )
-
+    // 	ligatecommon( phasingrare.out.collect() )
 
 }
+
+//        .splitCsv( header: true, sep: '\t' )
+//        .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
+
+
+//    phasingcommon_chunks_list = countLines(params.phase_common_list)
+//    phasingcommon_out_list = listOfFiles(files(phasingcommon.out))
+
+//        if( phasingcommon_chunks_list == phasingcommon_out_list ) {
+//            ligate( phasingcommon_list )
+//        }
+//         .map { row-> tuple(row.chr_no, row.chunk_region1, row.chunk_region2, file(row.vcf), file(row.index), file(row.gmap)) }
 
 /*
 ----------------------------------------------------------------------

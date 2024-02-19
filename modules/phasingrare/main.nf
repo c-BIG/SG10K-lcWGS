@@ -31,7 +31,7 @@ process phasingrare {
         --thread ${task.cpus} \
         --scaffold ${scaffold} \
         --scaffold-region ${scaffold_region} \
-        --input-region ${input_region} && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
+        --input-region ${input_region} --seed 25052011 && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
 
     """
 }

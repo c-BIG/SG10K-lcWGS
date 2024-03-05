@@ -1,5 +1,4 @@
 process ligatecommon {
-        debug true
 
 	tag {chr_no}
 
@@ -7,7 +6,7 @@ process ligatecommon {
 	tuple val(chr_no), path(bcf), path(index)
 
 	output:
-	path("${chr_no}/${chr_no}_phase_common.txt"), emit:txt_out
+	path("${chr_no}/${chr_no}_phase_common.txt"), emit:common_list
 
 	script:
 	"""

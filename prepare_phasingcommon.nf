@@ -109,7 +109,7 @@ workflow {
 
     Channel
         //.fromList( chr1..chr22 )
-        .of('chr1', 'chr2', 'ch22')
+        .of('ch22')
         .set {chromosomes_list}
 
     ligatecommon(chromosomes_list.combine(phasingcommon.out,by:0))

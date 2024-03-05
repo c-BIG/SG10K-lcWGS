@@ -107,20 +107,16 @@ workflow {
 
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
 
-    ligatecommon( phasingcommon.out.collect() )
+    Channel
+        //.fromList( chr1..chr22 )
+        .of(chr1..ch22)
+        .set {chromosomes_list}
+
+    chromosomes_list.combine(phasecommon.out,by:0).set{ligatecommon}.view()
+    //ligatecommon( phasingcommon.out.collect() )
 
 }
 
-//        .splitCsv( header: true, sep: '\t' )
-//        .map { row-> tuple(row.chunk_no, row.chr_no, row.chunk_region) }
-
-
-//    phasingcommon_chunks_list = countLines(params.phase_common_list)
-//    phasingcommon_out_list = listOfFiles(files(phasingcommon.out))
-
-//        if( phasingcommon_chunks_list == phasingcommon_out_list ) {
-//            ligate( phasingcommon_list )
-//        }
 //         .map { row-> tuple(row.chr_no, row.chunk_region1, row.chunk_region2, file(row.vcf), file(row.index), file(row.gmap)) }
 
 /*

@@ -1,7 +1,7 @@
 process ligatecommon {
         debug true
 
-	tag ${chr_no}
+	tag {chr_no}
 
 	input:
 	tuple val(chr_no), path(bcf), path(index)

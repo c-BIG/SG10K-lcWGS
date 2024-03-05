@@ -112,8 +112,13 @@ workflow {
         .of('ch22')
         .set {chromosomes_list}
 
+    chromosomes_list.combine(phasingcommon.out,by:0)
+        .map { chr_no, bcf, idx -> [chr_no, bcf, idx] }
+        .set { ligate }
+
     //ligatecommon(chromosomes_list.combine(phasingcommon.out,by:0))
-    chromosomes_list.combine(phasingcommon.out,by:0).set{ligate}
+    //chromosomes_list.combine(phasingcommon,by:0).set{ligate}
+    //chromosomes_list.combine(phasingcommon,by:0).view()
     ligatecommon(ligate)
     //ligatecommon( phasingcommon.out.collect() )
 

@@ -112,7 +112,8 @@ workflow {
         .of('chr1', 'chr2', 'ch22')
         .set {chromosomes_list}
 
-    chromosomes_list.combine(phasingcommon.out,by:0).set{ligatecommon}
+    ligatecommon(chromosomes_list.combine(phasingcommon.out,by:0))
+    //chromosomes_list.combine(phasingcommon.out,by:0).set{ligatecommon}
     //ligatecommon( phasingcommon.out.collect() )
 
 }

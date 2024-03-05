@@ -112,9 +112,9 @@ workflow {
         .of('ch22')
         .set {chromosomes_list}
 
-    ligatecommon(chromosomes_list.combine(phasingcommon.out,by:0))
-    //chromosomes_list.combine(phasingcommon.out,by:0).set{ligate}
-    //ligatecommon(ligate)
+    //ligatecommon(chromosomes_list.combine(phasingcommon.out,by:0))
+    chromosomes_list.combine(phasingcommon.out,by:0).set{ligate}
+    ligatecommon(ligate)
     //ligatecommon( phasingcommon.out.collect() )
 
 }

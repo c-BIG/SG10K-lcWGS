@@ -108,8 +108,8 @@ workflow {
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
 
     Channel
-        //.fromList( chr1..chr22 )
-        .of(chr1..ch22)
+        .fromList( chr1..chr22 )
+        //.of(chr1..ch22)
         .set {chromosomes_list}
 
     chromosomes_list.combine(phasecommon.out,by:0).set{ligatecommon}.view()

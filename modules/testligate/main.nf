@@ -7,7 +7,8 @@ process testligate {
         tuple val(chr_no), path(bcf_files)
 
 	output:
-	tuple val(chr_no), path("${chr_no}/10k.${chr_no}.scaffolds.bcf*")
+	tuple val(chr_no), path("${chr_no}/10k.${chr_no}.scaffolds.bcf*"), emit: common_bcf_files
+        path("${chr_no}/${chr_no}_phase_common.txt"), emit: common_list
         //tuple val(chr_no), path("${chr_no}/${chr_no}_phase_common.txt"), emit:common_list
 
 	script:

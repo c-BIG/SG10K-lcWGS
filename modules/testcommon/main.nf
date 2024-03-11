@@ -9,7 +9,7 @@ process testcommon {
     output:
     // tuple val(chr_no), val(chunk_no), val(chunk_region), path("${chr_no}/SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_*.common.bcf*")
     // tuple val(chr_no), path("${chr_no}/SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_*.common.bcf*")
-    tuple val(chr_no), path("${chr_no}/10k.${chr_no}.chunk_*.common.bcf*")
+    tuple val(chr_no), path("${chr_no}/10k.${chr_no}.chunk_*.common.bcf*"), emit: common_bcf_files
 
     script:
 

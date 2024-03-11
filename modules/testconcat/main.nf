@@ -7,8 +7,8 @@ process testconcat {
         tuple val(chr_no), path(bcf_files)
 
 	output:
-	tuple val(chr_no), path("${chr_no}/10k.${chr_no}.rare.full.bcf*")
-        //tuple val(chr_no), path("${chr_no}/${chr_no}_phase_rare.txt"), emit:common_list
+	tuple val(chr_no), path("${chr_no}/10k.${chr_no}.rare.full.bcf*"), emit: phased_final_bcf
+        tuple val(chr_no), path("${chr_no}/${chr_no}_phase_rare.txt"), emit:rare_scaffold_list
 
 	script:
 	"""

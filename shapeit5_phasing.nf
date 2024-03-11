@@ -97,6 +97,8 @@ WORKFLOW
 
 workflow {
 
+    PREFIX = params.prefix
+
     // get the count of common chunks per chromosomes, to pass groupkey to initiate the ligate/concat process immediate to the no. of chunks processed by phase common
     common_chunk_frequency = Channel.fromPath(params.phase_common_list)
         .map { csv -> csv.splitCsv(header: false , sep: '\t') // Applies splitCsv to a file // Note: this is not the channel operator, but has same args
@@ -140,14 +142,14 @@ workflow {
         .map { row -> tuple(row[1], row[0], row[2], row[3]) }
         .set { phase_rare_chunks_ch }
 
-    // unrelated samples chr and its bcf and bcf index files path and 
+    // make a tuple of unrelated samples chr and its bcf, bcf index files path and gmap
     Channel
         .fromPath(params.input_files_list)
         .splitCsv(header: false, sep: '\t')
         .map { row -> tuple(row[0], file(row[1]), file(row[1]) + '.csi', file(row[2])) }
         .set { input_files_ch }
 
-    //combine the common chunk regions and bcf files list
+    //combine the common chunk regions and samples bcf and gmap files list
     phase_common_chunks_ch
         .combine(input_files_ch,by:0)
         .set{commoncombinedset}
@@ -155,7 +157,7 @@ workflow {
     //run phase common varinats per chunk region
     testcommon(commoncombinedset)
 
-    //collect phase common output and combine the count list of chunk regions per chr to ligate
+    //collect phase common output and combine the count list of common chunk regions per chr to ligate
     common_chunk_frequency
         .combine(testcommon.out.common_bcf_files,by:0)
         .map{chr, count, bcf -> tuple( groupKey(chr, count), bcf ) }

@@ -108,7 +108,6 @@ workflow {
     phasingcommon( phase_common_run_ch, vcf, vcf_idx, gmap )
 
     Channel
-        //.fromList( chr1..chr22 )
         .of('ch22')
         .set {chromosomes_list}
 

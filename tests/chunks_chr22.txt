@@ -1,0 +1,3 @@
+0,chr22,chr22:1-24938302,chr22:1-24062346,22.3046,13552134,785985,139701,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz.tbi
+1,chr22,chr22:23562240-38912148,chr22:24062346-37737680,24.7301,13675334,883368,139701,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz.tbi
+2,chr22,chr22:37237693-50808378,chr22:37737706-50808378,27.1096,13070672,944880,146056,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz,/home/ubuntu/lcwgs-dev/shapit5/sites/SG10K_Health_r5.3.2.n9770.chr22.vcf.gz.tbi

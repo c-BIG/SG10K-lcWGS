@@ -5,6 +5,7 @@ process testcommon {
 
     input:
     tuple val(chr_no), val(chunk_no), val(chunk_region), path(bcf), path(csi), path(gmap)
+    val(PREFIX)
 
     output:
     // tuple val(chr_no), val(chunk_no), val(chunk_region), path("${chr_no}/SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_*.common.bcf*")
@@ -26,6 +27,7 @@ process testcommon {
 
     #echo TEST BCF ${chunk_no} ${chunk_region} ${bcf} > ${chr_no}/\${OUT}
     #echo TEST IDX ${chunk_no} ${chunk_region} ${bcf} > ${chr_no}/\${OUT_idx}
+
 
     phase_common \
         --input ${bcf} \

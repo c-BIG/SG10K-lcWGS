@@ -155,7 +155,7 @@ workflow {
         .set{commoncombinedset}
 
     //run phase common varinats per chunk region
-    testcommon(commoncombinedset)
+    testcommon(commoncombinedset, PREFIX)
 
     //collect phase common output and combine the count list of common chunk regions per chr to ligate
     common_chunk_frequency
@@ -166,7 +166,7 @@ workflow {
         .set{ligate}
 
     //run ligate of phase common outputs
-    testligate(ligate)
+    testligate(ligate, PREFIX)
 
     // combine the rare 4cM chunks region, samples bcf and its index and phase common ligated scaffold and its index per chr
     phase_rare_chunks_ch
@@ -176,7 +176,7 @@ workflow {
         .view().set{phaserare}
 
     //run phase rare varinats per chunk region
-    testrare(phaserare)
+    testrare(phaserare, PREFIX)
 
     // collect phase rare output and combine the count list of chunk regions per chr to concat
     rare_chunk_frequency
@@ -187,7 +187,7 @@ workflow {
         .view().set{concat}
 
     //run concate process of all the phase rare outputs
-    testconcat(concat)
+    testconcat(concat, PREFIX)
 
 }
 

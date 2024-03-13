@@ -24,7 +24,7 @@ process testrare {
     #OUT_idx=SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_${chunk_no}.common.bcf.csi
 
     OUT=${PREFIX}.${chr_no}.chunk_${chunk_no}.rare.bcf
-    $OUT_idx=10k.${chr_no}.chunk_${chunk_no}.rare.bcf.csi
+    #OUT_idx=10k.${chr_no}.chunk_${chunk_no}.rare.bcf.csi
 
     #echo ${chr_no}, ${chunk_no}, ${scaffold_reg}, ${input_reg}, ${bcf}, ${csi}, ${gmap}, ${scaffold[0]} >${chr_no}/\${OUT}
 

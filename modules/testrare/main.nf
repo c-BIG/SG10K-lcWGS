@@ -39,6 +39,6 @@ process testrare {
         --thread ${task.cpus} \
         --scaffold ${scaffold[0]} \
         --scaffold-region ${scaffold_reg} \
-        --input-region ${input_reg} --seed 35052011 && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
+        --input-region ${input_reg} --seed 25052011 && bcftools index -f ${chr_no}/\${OUT} --threads ${task.cpus}
     """
 }

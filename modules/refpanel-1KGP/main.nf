@@ -9,6 +9,7 @@ process refpanel {
     output:
     // tuple val(chr_no), path("binary/${chr_no}_bin/${BIN}*"), path("chunks/${chr_no}_all.txt")
     tuple val(chr_no), path("chunks/${chr_no}_*.txt")
+    tuple val(chr_no), path("nogt/${BIN}_${chr_no}.nogt.bcf*")
 
     script:
 
@@ -33,15 +34,25 @@ process refpanel {
     bcftools view -G -Ob -o nogt/${BIN}_${chr_no}.nogt.bcf tagged/${BIN}_${chr_no}.tagged.bcf
     bcftools index -f nogt/${BIN}_${chr_no}.nogt.bcf --threads ${bcf_threads}
 
-    #Chunking reference panel with 4cM and maf 0.001
+    #Chunking reference panel with 6cM and maf 0.001
     GLIMPSE2_chunk \
         --input nogt/${BIN}_${chr_no}.nogt.bcf \
         --region ${chr_no} \
-        --output chunks/"${chr_no}_4cM_maf001.txt" \
+        --output chunks/"${chr_no}_6cM_maf001.txt" \
         --map ${gmap} \
         --sequential \
-        --window-cm 4.0 \
+        --window-cm 6.0 \
         --sparse-maf 0.001
+
+    #Chunking reference panel with 4cM and maf 0.001
+    #GLIMPSE2_chunk \
+    #    --input nogt/${BIN}_${chr_no}.nogt.bcf \
+    #    --region ${chr_no} \
+    #    --output chunks/"${chr_no}_4cM_maf001.txt" \
+    #    --map ${gmap} \
+    #    --sequential \
+    #    --window-cm 4.0 \
+    #    --sparse-maf 0.001
 
     #Chunking reference panel with 20cM and maf 0.001
     GLIMPSE2_chunk \

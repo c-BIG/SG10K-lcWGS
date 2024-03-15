@@ -20,14 +20,6 @@ process testcommon {
 
     #phasing common variants per chr and chunks
 
-    #OUT=SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_${chunk_no}.common.bcf
-    #OUT_idx=SG10K_Health_r5.3.2.n6686.shapeit5.filtered.${chr_no}.chunk_${chunk_no}.common.bcf.csi
-    #OUT=10k.${chr_no}.chunk_${chunk_no}.common.bcf
-    #OUT_idx=10k.${chr_no}.chunk_${chunk_no}.common.bcf.csi
-
-    #echo TEST BCF ${chunk_no} ${chunk_region} ${bcf} > ${chr_no}/\${OUT}
-    #echo TEST IDX ${chunk_no} ${chunk_region} ${bcf} > ${chr_no}/\${OUT_idx}
-
 
     phase_common \
         --input ${bcf} \

@@ -24,6 +24,6 @@ process testcommon {
         --output ${chr_no}/${PREFIX}.${chr_no}.chunk_${chunk_no}.common.bcf \
         --thread ${task.cpus} \
         --filter-maf 0.001 \
-        --region ${chunk_region} --seed 25052011 && bcftools index -f ${chr_no}/${PREFIX}.${chr_no}.chunk_${chunk_no}.common.bcf --threads ${task.cpus}
+        --region ${chunk_region} && bcftools index -f ${chr_no}/${PREFIX}.${chr_no}.chunk_${chunk_no}.common.bcf --threads ${task.cpus}
     """
 }

@@ -82,7 +82,7 @@ PROCESSES
 ---------------------------------------------------------------------
 */
 
-include { refpanel-1KGP } from './modules/refpanel-1KGP'
+include { refpanel } from './modules/refpanel-1KGP'
 
 /*
 ----------------------------------------------------------------------
@@ -115,7 +115,7 @@ workflow {
         }
         .set { vcf_inputs }
 
-    refpanel-1KGP( vcf_inputs, BIN )
+    refpanel( vcf_inputs, BIN )
 
 
 }

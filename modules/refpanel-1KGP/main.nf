@@ -1,4 +1,4 @@
-process refpanel-1KGP {
+process refpanel {
 
     tag { chr_no }
 
